@@ -4,7 +4,7 @@ import moment from "moment";
 
 
 const Formulario = () => {
-  const [precioHora, setPrecioHora] = useState();
+  const [precioHora, setPrecioHora] = useState(0);
   const [horaTrabajadas, setHoraTrabajadas] = useState({
     L1:"00:00",
     L2:"00:00",
@@ -47,21 +47,32 @@ var m = (
 )
 /1000/60*precioHora/60;
 
-
-  // const handleInputChange = (event) => {
-  //     datos= {
-  //         [event.target.name] : event.target.value
-  //     }
-  //     var c=datos
-  //     console.log(c)
-  // return datos
-  // }
-
-  // const enviarDatos = (event) => {
-  //     event.preventDefault()
-  //     console.log(datos.name)
-
-  // }
+  const Reiniciar = (event) => {
+      event.preventDefault()
+      setHoraTrabajadas({
+    L1:"00:00",
+    L2:"00:00",
+    M1:"00:00",
+    M2:"00:00",
+    I1:"00:00",
+    I2:"00:00",
+    J1:"00:00",
+    J2:"00:00",
+    V1:"00:00",
+    V2:"00:00",
+    L3:"00:00",
+    L4:"00:00",
+    M3:"00:00",
+    M4:"00:00",
+    I3:"00:00",
+    I4:"00:00",
+    J3:"00:00",
+    J4:"00:00",
+    V3:"00:00",
+    V4:"00:00",
+      })
+      setPrecioHora(0)
+ }
 
   return (
     <div className="conteiner">
@@ -76,6 +87,7 @@ var m = (
             type="text"
             name="precioHora"
             onChange={(e) => setPrecioHora(e.target.value)}
+            value={precioHora}
            ></input>
         </div>
       </form>
@@ -86,7 +98,7 @@ var m = (
         <div className="col-md-2">
           <input
             className="form-control "
-            defaultValue="00:00"
+            value={horaTrabajadas.L1}
             type="text"
             name="L1"
             onChange={handleInputChange}
@@ -95,7 +107,7 @@ var m = (
         <div className="col-md-2">
           <input
             className="form-control "
-            defaultValue="00:00"
+            value={horaTrabajadas.L2}
             type="text"
             name="L2"
             onChange={handleInputChange}
@@ -109,7 +121,7 @@ var m = (
         <div className="col-md-2">
           <input
             className="form-control "
-            defaultValue="00:00"
+            value={horaTrabajadas.L3}
             type="text"
             name="L3"
             onChange={handleInputChange}
@@ -118,7 +130,7 @@ var m = (
         <div className="col-md-2">
           <input
             className="form-control "
-            defaultValue="00:00"
+            value={horaTrabajadas.L4}
             type="text"
             name="L4"
             onChange={handleInputChange}
@@ -132,7 +144,7 @@ var m = (
         <div className="col-md-2">
           <input
             className="form-control "
-            defaultValue="00:00"
+            value={horaTrabajadas.M1}
             type="text"
             name="M1"
             onChange={handleInputChange}
@@ -141,7 +153,7 @@ var m = (
         <div className="col-md-2">
           <input
             className="form-control "
-            defaultValue="00:00"
+            value={horaTrabajadas.M2}
             type="text"
             name="M2"
             onChange={handleInputChange}
@@ -155,7 +167,7 @@ var m = (
         <div className="col-md-2">
           <input
             className="form-control "
-            defaultValue="00:00"
+            value={horaTrabajadas.M3}
             type="text"
             name="M3"
             onChange={handleInputChange}
@@ -164,7 +176,7 @@ var m = (
         <div className="col-md-2">
           <input
             className="form-control "
-            defaultValue="00:00"
+            value={horaTrabajadas.M4}
             type="text"
             name="M4"
             onChange={handleInputChange}
@@ -178,7 +190,7 @@ var m = (
         <div className="col-md-2">
           <input
             className="form-control "
-            defaultValue="00:00"
+            value={horaTrabajadas.I1}
             type="text"
             name="I1"
             onChange={handleInputChange}
@@ -187,7 +199,7 @@ var m = (
         <div className="col-md-2">
           <input
             className="form-control "
-            defaultValue="00:00"
+            value={horaTrabajadas.I2}
             type="text"
             name="I2"
             onChange={handleInputChange}
@@ -201,7 +213,7 @@ var m = (
         <div className="col-md-2">
           <input
             className="form-control "
-            defaultValue="00:00"
+            value={horaTrabajadas.I3}
             type="text"
             name="I3"
             onChange={handleInputChange}
@@ -210,7 +222,7 @@ var m = (
         <div className="col-md-2">
           <input
             className="form-control "
-            defaultValue="00:00"
+            value={horaTrabajadas.I4}
             type="text"
             name="I4"
             onChange={handleInputChange}
@@ -224,7 +236,7 @@ var m = (
         <div className="col-md-2">
           <input
             className="form-control "
-            defaultValue="00:00"
+            value={horaTrabajadas.J1}
             type="text"
             name="J1"
             onChange={handleInputChange}
@@ -233,7 +245,7 @@ var m = (
         <div className="col-md-2">
           <input
             className="form-control "
-            defaultValue="00:00"
+            value={horaTrabajadas.J2}
             type="text"
             name="J2"
             onChange={handleInputChange}
@@ -247,7 +259,7 @@ var m = (
         <div className="col-md-2">
           <input
             className="form-control "
-            defaultValue="00:00"
+            value={horaTrabajadas.J3}
             type="text"
             name="J3"
             onChange={handleInputChange}
@@ -256,7 +268,7 @@ var m = (
         <div className="col-md-2">
           <input
             className="form-control "
-            defaultValue="00:00"
+            value={horaTrabajadas.J4}
             type="text"
             name="J4"
             onChange={handleInputChange}
@@ -270,7 +282,7 @@ var m = (
         <div className="col-md-2">
           <input
             className="form-control "
-            defaultValue="00:00"
+            value={horaTrabajadas.V1}
             type="text"
             name="V1"
             onChange={handleInputChange}
@@ -279,7 +291,7 @@ var m = (
         <div className="col-md-2">
           <input
             className="form-control "
-            defaultValue="00:00"
+            value={horaTrabajadas.V2}
             type="text"
             name="V2"
             onChange={handleInputChange}
@@ -293,7 +305,7 @@ var m = (
         <div className="col-md-2">
           <input
             className="form-control "
-            defaultValue="00:00"
+            value={horaTrabajadas.V3}
             type="text"
             name="V3"
             onChange={handleInputChange}
@@ -302,15 +314,18 @@ var m = (
         <div className="col-md-2">
           <input
             className="form-control "
-            defaultValue="00:00"
+            value={horaTrabajadas.V4}
             type="text"
             name="V4"
             onChange={handleInputChange}
           ></input>
         </div>
         <div className="col-md-3">
-          <button className="btn btn-primary" type="submit">
-            {" "}
+          <button 
+          className="btn btn-primary" 
+          type="submit"
+          onClick={Reiniciar}>
+           {" "}
             Reiniciar{" "}
           </button>
         </div>
