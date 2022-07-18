@@ -12,7 +12,7 @@ const Formulario = ({precioHora, setPrecioHora, handleInputChange, horaTrabajada
         </div>
         <div className="col-md-2">
           <input
-            className="form-control "
+            className={`form-control ${precioHora >= 0 ? "" :"alert-danger"}`}
             type="text"
             name="precioHora"
             onChange={(e) => setPrecioHora(e.target.value)}
