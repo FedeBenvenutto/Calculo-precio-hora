@@ -1,8 +1,10 @@
 import React from "react";
 import "../estilos/formulario.css";
 import Input from "./input"
+import moment from "moment";
 
-const Formulario = ({precioHora, setPrecioHora, handleInputChange, horaTrabajadas}) => {
+const Formulario = ({precioHora, setPrecioHora, handleInputChange, horaTrabajadas, setErrores}) => {
+    
     return (
     <div className="conteiner">
       <h1> Calculo total de horas con precio</h1><br></br>
@@ -37,6 +39,9 @@ const Formulario = ({precioHora, setPrecioHora, handleInputChange, horaTrabajada
             handleInputChange={handleInputChange}
             horaTrabajadas={horaTrabajadas.L2}
             /> 
+        </div>
+        <div> 
+          {(moment(horaTrabajadas.L1, "HH:mm")) > (moment(horaTrabajadas.L2, "HH:mm")) ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
         </div>
       </form>
       <form className="row">

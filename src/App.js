@@ -4,6 +4,7 @@ import moment from 'moment';
 
 function App() {
   const [precioHora, setPrecioHora] = useState(0);
+  const [Errores, setErrores] = useState(false);
   const [horaTrabajadas, setHoraTrabajadas] = useState({
     L1:"00:00",
     L2:"00:00",
@@ -28,9 +29,10 @@ function App() {
   });
   const handleInputChange = (event) => {
       setHoraTrabajadas({ ...horaTrabajadas, [event.target.name]: event.target.value});
+  
   };
 
-var m = (
+var CalculoTotal = (
 ((moment(horaTrabajadas.L2, "HH:mm")) - (moment(horaTrabajadas.L1, "HH:mm"))) +
 ((moment(horaTrabajadas.L4, "HH:mm")) - (moment(horaTrabajadas.L3, "HH:mm"))) +
 ((moment(horaTrabajadas.M2, "HH:mm")) - (moment(horaTrabajadas.M1, "HH:mm"))) +
@@ -44,7 +46,7 @@ var m = (
 )
 /1000/60*precioHora/60;
 
-  const Reiniciar = (event) => {
+const Reiniciar = (event) => {
       event.preventDefault()
       setHoraTrabajadas({
     L1:"00:00",
@@ -74,17 +76,21 @@ var m = (
     <div className= "container mt-5">
       <h1> <Formulario 
       precioHora={precioHora}
-      setPrecioHora={setPrecioHora} 
+      setPrecioHora={setPrecioHora}
       handleInputChange={handleInputChange}
       horaTrabajadas={horaTrabajadas}
+      setErrores={setErrores}
        /> </h1> 
         <br/>
-    <h5>  El valor total a pagar es $ {m} </h5> <br></br>
+        
+    <h5>  El valor total a pagar es $ {Errores ? "" : CalculoTotal} </h5> 
+    <div> {Errores ? <p className="text-danger fs-6 font-monospace ms-2"> Por favor corrija los errores </p> : "" }</div>
+    <br></br>
     <button 
           className="btn btn-primary" 
           type="submit"
           onClick={Reiniciar}>
-            Reiniciar{" "}
+            Reiniciar
           </button>
     </div>  
       );
