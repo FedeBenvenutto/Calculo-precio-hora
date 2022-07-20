@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Formulario from './components/formulario';
 import moment from 'moment';
 
@@ -29,8 +29,37 @@ function App() {
   });
   const handleInputChange = (event) => {
       setHoraTrabajadas({ ...horaTrabajadas, [event.target.name]: event.target.value});
-  
+      let valor= event.target.value;
+      valor.length === 5 && valor[0] < 3 && valor[3] < 6 && valor[2] === ':' && (valor[0]+valor[1]) < 24 ? setErrores(false) : setErrores(true);
   };
+  useEffect (() => {
+    if ((moment(horaTrabajadas.L2, "HH:mm")) >= (moment(horaTrabajadas.L1, "HH:mm")) &&
+      ((moment(horaTrabajadas.L4, "HH:mm")) >= (moment(horaTrabajadas.L3, "HH:mm"))) &&
+      ((moment(horaTrabajadas.M2, "HH:mm")) >= (moment(horaTrabajadas.M1, "HH:mm"))) &&
+      ((moment(horaTrabajadas.M4, "HH:mm")) >= (moment(horaTrabajadas.M3, "HH:mm"))) &&
+      ((moment(horaTrabajadas.I2, "HH:mm")) >= (moment(horaTrabajadas.I1, "HH:mm"))) &&
+      ((moment(horaTrabajadas.I4, "HH:mm")) >= (moment(horaTrabajadas.I3, "HH:mm"))) &&
+      ((moment(horaTrabajadas.J2, "HH:mm")) >= (moment(horaTrabajadas.J1, "HH:mm"))) &&
+      ((moment(horaTrabajadas.J4, "HH:mm")) >= (moment(horaTrabajadas.J3, "HH:mm"))) &&
+      ((moment(horaTrabajadas.V2, "HH:mm")) >= (moment(horaTrabajadas.V1, "HH:mm"))) &&
+      ((moment(horaTrabajadas.V4, "HH:mm")) >= (moment(horaTrabajadas.V3, "HH:mm")))
+    ) { 
+      setErrores(false)
+    }  else {
+      setErrores(true)
+    } }, [horaTrabajadas])
+  
+  const handleHoraChange = (event) => {
+    setPrecioHora(event.target.value)
+    if (precioHora >= 0) {
+      setErrores(false)
+      // document.getElementsByName("precioHora").classList.add("form-control")
+    } else {
+      setErrores(true)
+      // document.getElementsByName("precioHora").classList.add("form-control alert-danger")
+    }  
+};
+
 
 var CalculoTotal = (
 ((moment(horaTrabajadas.L2, "HH:mm")) - (moment(horaTrabajadas.L1, "HH:mm"))) +
@@ -70,13 +99,14 @@ const Reiniciar = (event) => {
     V3:"00:00",
     V4:"00:00",
       })
-      setPrecioHora(0)
+      setPrecioHora(0);
+  
  }
   return (
     <div className= "container mt-5">
       <h1> <Formulario 
       precioHora={precioHora}
-      setPrecioHora={setPrecioHora}
+      handleHoraChange={handleHoraChange}
       handleInputChange={handleInputChange}
       horaTrabajadas={horaTrabajadas}
       setErrores={setErrores}
@@ -84,7 +114,12 @@ const Reiniciar = (event) => {
         <br/>
         
     <h5>  El valor total a pagar es $ {Errores ? "" : CalculoTotal} </h5> 
-    <div> {Errores ? <p className="text-danger fs-6 font-monospace ms-2"> Por favor corrija los errores </p> : "" }</div>
+    <div> 
+      <>
+      
+      {Errores ? <p className="text-danger fs-6 font-monospace ms-2"> Por favor corrija los errores </p> : "" }
+      </>
+      </div>
     <br></br>
     <button 
           className="btn btn-primary" 

@@ -1,10 +1,10 @@
 import React from "react";
 import "../estilos/formulario.css";
-import Input from "./input"
+import Input from "./input";
 import moment from "moment";
 
-const Formulario = ({precioHora, setPrecioHora, handleInputChange, horaTrabajadas, setErrores}) => {
-    
+const Formulario = ({precioHora, handleHoraChange, handleInputChange, horaTrabajadas, setErrores}) => {
+
     return (
     <div className="conteiner">
       <h1> Calculo total de horas con precio</h1><br></br>
@@ -14,10 +14,11 @@ const Formulario = ({precioHora, setPrecioHora, handleInputChange, horaTrabajada
         </div>
         <div className="col-md-2">
           <input
-            className={`form-control ${precioHora >= 0 ? "" :"alert-danger"}`}
+            // className={`form-control ${precioHora >= 0 ? "" :"alert-danger"}`}
+            className="form-control"
             type="text"
             name="precioHora"
-            onChange={(e) => setPrecioHora(e.target.value)}
+            onChange={handleHoraChange}
             value={precioHora}
            ></input>
         </div>
@@ -41,7 +42,10 @@ const Formulario = ({precioHora, setPrecioHora, handleInputChange, horaTrabajada
             /> 
         </div>
         <div> 
-          {(moment(horaTrabajadas.L1, "HH:mm")) > (moment(horaTrabajadas.L2, "HH:mm")) ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+          {(moment(horaTrabajadas.L1, "HH:mm")) > (moment(horaTrabajadas.L2, "HH:mm")) ? 
+         
+          <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6>
+          : ""}
         </div>
       </form>
       <form className="row">
@@ -62,7 +66,11 @@ const Formulario = ({precioHora, setPrecioHora, handleInputChange, horaTrabajada
             horaTrabajadas={horaTrabajadas.L4}
             /> 
         </div>
+        
       </form>
+      <div> 
+          {(moment(horaTrabajadas.L3, "HH:mm")) > (moment(horaTrabajadas.L4, "HH:mm")) ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+      </div>
       <form className="row">
         <div className="col-md-2">
           <p> Martes a la mañana </p>
@@ -82,6 +90,9 @@ const Formulario = ({precioHora, setPrecioHora, handleInputChange, horaTrabajada
             /> 
         </div>
       </form>
+      <div> 
+          {(moment(horaTrabajadas.M1, "HH:mm")) > (moment(horaTrabajadas.M2, "HH:mm")) ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+      </div>
       <form className="row align-items-start">
         <div className="col-md-2">
           <p> Martes a la tarde </p>
@@ -101,6 +112,9 @@ const Formulario = ({precioHora, setPrecioHora, handleInputChange, horaTrabajada
             /> 
         </div>
       </form>
+      <div> 
+          {(moment(horaTrabajadas.M3, "HH:mm")) > (moment(horaTrabajadas.M4, "HH:mm")) ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+      </div>
       <form className="row">
         <div className="col-md-2">
           <p> Miércoles a la mañana</p>
@@ -120,6 +134,9 @@ const Formulario = ({precioHora, setPrecioHora, handleInputChange, horaTrabajada
             /> 
         </div>
       </form>
+      <div> 
+          {(moment(horaTrabajadas.I1, "HH:mm")) > (moment(horaTrabajadas.I2, "HH:mm")) ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+      </div>
       <form className="row">
         <div className="col-md-2">
           <p> Miércoles a la tarde </p>
@@ -139,6 +156,9 @@ const Formulario = ({precioHora, setPrecioHora, handleInputChange, horaTrabajada
             /> 
         </div>
       </form>
+      <div> 
+          {(moment(horaTrabajadas.I3, "HH:mm")) > (moment(horaTrabajadas.I4, "HH:mm")) ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+      </div>
       <form className="row align-items-start">
         <div className="col-md-2">
           <p> Jueves a la mañana </p>
@@ -158,6 +178,9 @@ const Formulario = ({precioHora, setPrecioHora, handleInputChange, horaTrabajada
             /> 
         </div>
       </form>
+      <div> 
+          {(moment(horaTrabajadas.J1, "HH:mm")) > (moment(horaTrabajadas.J2, "HH:mm")) ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+      </div>
       <form className="row">
         <div className="col-md-2">
           <p> Jueves a la tarde</p>
@@ -177,6 +200,9 @@ const Formulario = ({precioHora, setPrecioHora, handleInputChange, horaTrabajada
             /> 
         </div>
       </form>
+      <div> 
+          {(moment(horaTrabajadas.J3, "HH:mm")) > (moment(horaTrabajadas.J4, "HH:mm")) ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+      </div>
       <form className="row">
         <div className="col-md-2">
           <p> Viernes a la mañana </p>
@@ -196,6 +222,9 @@ const Formulario = ({precioHora, setPrecioHora, handleInputChange, horaTrabajada
             /> 
         </div>
       </form>
+      <div> 
+          {(moment(horaTrabajadas.V1, "HH:mm")) > (moment(horaTrabajadas.V2, "HH:mm")) ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+      </div>
       <form className="row">
         <div className="col-md-2">
           <p> Viernes a la tarde </p>
@@ -216,6 +245,9 @@ const Formulario = ({precioHora, setPrecioHora, handleInputChange, horaTrabajada
         </div>
         
       </form>
+      <div> 
+          {(moment(horaTrabajadas.V3, "HH:mm")) > (moment(horaTrabajadas.V4, "HH:mm")) ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+      </div>
       
     </div>
     
