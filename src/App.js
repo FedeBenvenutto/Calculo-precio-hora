@@ -5,7 +5,7 @@ import moment from 'moment';
 function App() {
   const [precioHora, setPrecioHora] = useState(0);
   const [Errores, setErrores] = useState({
-    estado: false, PH: false, L1: false, L2: false, M1: false,
+    PH: false, L1: false, L2: false, M1: false,
     M2: false, I1: false, I2: false, J1: false, J2: false, V1: false, V2: false, L3: false, L4: false,
     M3: false, M4: false, I3: false, I4: false, J3: false, J4: false, V3: false, V4: false, C1: false,
     C2: false, C3: false, C4: false, C5: false, C6: false, C7: false, C8: false, C9: false, C10: false
@@ -22,16 +22,16 @@ function App() {
     setHoraTrabajadas({ ...horaTrabajadas, [event.target.name]: event.target.value });
     let valor = event.target.value;
     valor.length === 5 && valor[0] < 3 && valor[3] < 6 && valor[2] === ':' && (valor[0] + valor[1]) < 24 ?
-      setErrores({ ...Errores, estado: false, [event.target.name]: false }) :
-      setErrores({ ...Errores, estado: true, [event.target.name]: true });
+      setErrores({ ...Errores,  [event.target.name]: false }) :
+      setErrores({ ...Errores,  [event.target.name]: true });
   };
 
   const handlePrecioChange = (event) => {
     setPrecioHora(event.target.value)
     if (event.target.value >= 0) {
-      setErrores({ ...Errores, estado: false, PH: false })
+      setErrores({ ...Errores,  PH: false })
     } else {
-      setErrores({ ...Errores, estado: true, PH: true })
+      setErrores({ ...Errores,  PH: true })
     }
   };
   var comprobarErroresInput = Errores.PH || Errores.L1 || Errores.L2 || Errores.M1 ||
@@ -103,8 +103,13 @@ function App() {
       I1: "00:00", I2: "00:00", J1: "00:00", J2: "00:00", V1: "00:00", V2: "00:00",
       L3: "00:00", L4: "00:00", M3: "00:00", M4: "00:00", I3: "00:00", I4: "00:00",
       J3: "00:00", J4: "00:00", V3: "00:00", V4: "00:00",
+
     })
     setPrecioHora(0);
+    setErrores({PH: false, L1: false, L2: false, M1: false,
+      M2: false, I1: false, I2: false, J1: false, J2: false, V1: false, V2: false, L3: false, L4: false,
+      M3: false, M4: false, I3: false, I4: false, J3: false, J4: false, V3: false, V4: false, C1: false,
+      C2: false, C3: false, C4: false, C5: false, C6: false, C7: false, C8: false, C9: false, C10: false})
 
   }
   return (
