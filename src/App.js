@@ -34,7 +34,7 @@ function App() {
       setErrores({ ...Errores,  PH: true })
     }
   };
-  var comprobarErroresInput = Errores.PH || Errores.L1 || Errores.L2 || Errores.M1 ||
+  var comprobarErroresInput =  Errores.L1 || Errores.L2 || Errores.M1 ||
     Errores.M2 || Errores.I1 || Errores.I2 || Errores.J1 || Errores.J2 || Errores.V1 || Errores.V2 || Errores.L3 || Errores.L4 ||
     Errores.M3 || Errores.M4 || Errores.I3 || Errores.I4 || Errores.J3 || Errores.J4 || Errores.V3 || Errores.V4
 
