@@ -1,11 +1,10 @@
 import React from "react";
 import "../estilos/formulario.css";
 import Input from "./input";
-import moment from "moment";
 
-const Formulario = ({precioHora, handleHoraChange, handleInputChange, horaTrabajadas, setErrores}) => {
+const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrabajadas, Errores }) => {
 
-    return (
+  return (
     <div className="conteiner">
       <h1> Calculo total de horas con precio</h1><br></br>
       <form className="row align-items-start">
@@ -14,38 +13,37 @@ const Formulario = ({precioHora, handleHoraChange, handleInputChange, horaTrabaj
         </div>
         <div className="col-md-2">
           <input
-            // className={`form-control ${precioHora >= 0 ? "" :"alert-danger"}`}
-            className="form-control"
+            className={`form-control ${Errores.PH ? "alert-danger" : ""}`}
             type="text"
             name="precioHora"
-            onChange={handleHoraChange}
+            onChange={handlePrecioChange}
             value={precioHora}
-           ></input>
+          ></input>
         </div>
       </form>
       <form className="row align-items-start">
         <div className="col-md-2">
           <p> Lunes a la mañana </p>
         </div>
-        <div className="col-md-2"> 
-            <Input 
+        <div className="col-md-2">
+          <Input
             nombre="L1"
-            handleInputChange={handleInputChange}
+            handleHoraChange={handleHoraChange}
             horaTrabajadas={horaTrabajadas.L1}
-            /> 
+            Errores={Errores.L1 || Errores.C1}
+          />
         </div>
         <div className="col-md-2">
-          <Input 
+          <Input
             nombre="L2"
-            handleInputChange={handleInputChange}
+            handleHoraChange={handleHoraChange}
             horaTrabajadas={horaTrabajadas.L2}
-            /> 
+            Errores={Errores.L2 || Errores.C1}
+          />
         </div>
-        <div> 
-          {(moment(horaTrabajadas.L1, "HH:mm")) > (moment(horaTrabajadas.L2, "HH:mm")) ? 
-         
-          <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6>
-          : ""}
+        <div>
+          {Errores.C1 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6>
+            : ""}
         </div>
       </form>
       <form className="row">
@@ -53,206 +51,224 @@ const Formulario = ({precioHora, handleHoraChange, handleInputChange, horaTrabaj
           <p> Lunes a la tarde</p>
         </div>
         <div className="col-md-2">
-          <Input 
+          <Input
             nombre="L3"
-            handleInputChange={handleInputChange}
+            handleHoraChange={handleHoraChange}
             horaTrabajadas={horaTrabajadas.L3}
-            /> 
+            Errores={Errores.L3 || Errores.C2}
+          />
         </div>
         <div className="col-md-2">
-          <Input 
+          <Input
             nombre="L4"
-            handleInputChange={handleInputChange}
+            handleHoraChange={handleHoraChange}
             horaTrabajadas={horaTrabajadas.L4}
-            /> 
+            Errores={Errores.L4 || Errores.C2}
+          />
         </div>
-        
+
       </form>
-      <div> 
-          {(moment(horaTrabajadas.L3, "HH:mm")) > (moment(horaTrabajadas.L4, "HH:mm")) ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+      <div>
+        {Errores.C2 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
       </div>
       <form className="row">
         <div className="col-md-2">
           <p> Martes a la mañana </p>
         </div>
         <div className="col-md-2">
-          <Input 
+          <Input
             nombre="M1"
-            handleInputChange={handleInputChange}
+            handleHoraChange={handleHoraChange}
             horaTrabajadas={horaTrabajadas.M1}
-            /> 
+            Errores={Errores.M1 || Errores.C3}
+          />
         </div>
         <div className="col-md-2">
-          <Input 
+          <Input
             nombre="M2"
-            handleInputChange={handleInputChange}
+            handleHoraChange={handleHoraChange}
             horaTrabajadas={horaTrabajadas.M2}
-            /> 
+            Errores={Errores.M2 || Errores.C3}
+          />
         </div>
       </form>
-      <div> 
-          {(moment(horaTrabajadas.M1, "HH:mm")) > (moment(horaTrabajadas.M2, "HH:mm")) ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+      <div>
+        {Errores.C3 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
       </div>
       <form className="row align-items-start">
         <div className="col-md-2">
           <p> Martes a la tarde </p>
         </div>
         <div className="col-md-2">
-          <Input 
+          <Input
             nombre="M3"
-            handleInputChange={handleInputChange}
+            handleHoraChange={handleHoraChange}
             horaTrabajadas={horaTrabajadas.M3}
-            /> 
+            Errores={Errores.M3 || Errores.C4}
+          />
         </div>
         <div className="col-md-2">
-          <Input 
+          <Input
             nombre="M4"
-            handleInputChange={handleInputChange}
+            handleHoraChange={handleHoraChange}
             horaTrabajadas={horaTrabajadas.M4}
-            /> 
+            Errores={Errores.M4 || Errores.C4}
+          />
         </div>
       </form>
-      <div> 
-          {(moment(horaTrabajadas.M3, "HH:mm")) > (moment(horaTrabajadas.M4, "HH:mm")) ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+      <div>
+        {Errores.C4 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
       </div>
       <form className="row">
         <div className="col-md-2">
           <p> Miércoles a la mañana</p>
         </div>
         <div className="col-md-2">
-          <Input 
+          <Input
             nombre="I1"
-            handleInputChange={handleInputChange}
+            handleHoraChange={handleHoraChange}
             horaTrabajadas={horaTrabajadas.I1}
-            /> 
+            Errores={Errores.I1 || Errores.C5}
+          />
         </div>
         <div className="col-md-2">
-          <Input 
+          <Input
             nombre="I2"
-            handleInputChange={handleInputChange}
+            handleHoraChange={handleHoraChange}
             horaTrabajadas={horaTrabajadas.I2}
-            /> 
+            Errores={Errores.I2 || Errores.C5}
+          />
         </div>
       </form>
-      <div> 
-          {(moment(horaTrabajadas.I1, "HH:mm")) > (moment(horaTrabajadas.I2, "HH:mm")) ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+      <div>
+        {Errores.C5 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
       </div>
       <form className="row">
         <div className="col-md-2">
           <p> Miércoles a la tarde </p>
         </div>
         <div className="col-md-2">
-          <Input 
+          <Input
             nombre="I3"
-            handleInputChange={handleInputChange}
+            handleHoraChange={handleHoraChange}
             horaTrabajadas={horaTrabajadas.I3}
-            /> 
+            Errores={Errores.I3 || Errores.C6}
+          />
         </div>
         <div className="col-md-2">
-          <Input 
+          <Input
             nombre="I4"
-            handleInputChange={handleInputChange}
+            handleHoraChange={handleHoraChange}
             horaTrabajadas={horaTrabajadas.I4}
-            /> 
+            Errores={Errores.I4 || Errores.C6}
+          />
         </div>
       </form>
-      <div> 
-          {(moment(horaTrabajadas.I3, "HH:mm")) > (moment(horaTrabajadas.I4, "HH:mm")) ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+      <div>
+        {Errores.C6 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
       </div>
       <form className="row align-items-start">
         <div className="col-md-2">
           <p> Jueves a la mañana </p>
         </div>
         <div className="col-md-2">
-        <Input 
+          <Input
             nombre="J1"
-            handleInputChange={handleInputChange}
+            handleHoraChange={handleHoraChange}
             horaTrabajadas={horaTrabajadas.J1}
-            /> 
+            Errores={Errores.J1 || Errores.C7}
+          />
         </div>
         <div className="col-md-2">
-        <Input 
+          <Input
             nombre="J2"
-            handleInputChange={handleInputChange}
+            handleHoraChange={handleHoraChange}
             horaTrabajadas={horaTrabajadas.J2}
-            /> 
+            Errores={Errores.J2 || Errores.C7}
+          />
         </div>
       </form>
-      <div> 
-          {(moment(horaTrabajadas.J1, "HH:mm")) > (moment(horaTrabajadas.J2, "HH:mm")) ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+      <div>
+        {Errores.C7 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
       </div>
       <form className="row">
         <div className="col-md-2">
           <p> Jueves a la tarde</p>
         </div>
         <div className="col-md-2">
-        <Input 
+          <Input
             nombre="J3"
-            handleInputChange={handleInputChange}
+            handleHoraChange={handleHoraChange}
             horaTrabajadas={horaTrabajadas.J3}
-            /> 
+            Errores={Errores.J3 || Errores.C8}
+          />
         </div>
         <div className="col-md-2">
-        <Input 
+          <Input
             nombre="J4"
-            handleInputChange={handleInputChange}
+            handleHoraChange={handleHoraChange}
             horaTrabajadas={horaTrabajadas.J4}
-            /> 
+            Errores={Errores.J4 || Errores.C8}
+          />
         </div>
       </form>
-      <div> 
-          {(moment(horaTrabajadas.J3, "HH:mm")) > (moment(horaTrabajadas.J4, "HH:mm")) ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+      <div>
+        {Errores.C8 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
       </div>
       <form className="row">
         <div className="col-md-2">
           <p> Viernes a la mañana </p>
         </div>
         <div className="col-md-2">
-        <Input 
+          <Input
             nombre="V1"
-            handleInputChange={handleInputChange}
+            handleHoraChange={handleHoraChange}
             horaTrabajadas={horaTrabajadas.V1}
-            /> 
+            Errores={Errores.V1 || Errores.C9}
+          />
         </div>
         <div className="col-md-2">
-        <Input 
+          <Input
             nombre="V2"
-            handleInputChange={handleInputChange}
+            handleHoraChange={handleHoraChange}
             horaTrabajadas={horaTrabajadas.V2}
-            /> 
+            Errores={Errores.V2 || Errores.C9}
+          />
         </div>
       </form>
-      <div> 
-          {(moment(horaTrabajadas.V1, "HH:mm")) > (moment(horaTrabajadas.V2, "HH:mm")) ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+      <div>
+        {Errores.C9 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
       </div>
       <form className="row">
         <div className="col-md-2">
           <p> Viernes a la tarde </p>
         </div>
         <div className="col-md-2">
-        <Input 
+          <Input
             nombre="V3"
-            handleInputChange={handleInputChange}
+            handleHoraChange={handleHoraChange}
             horaTrabajadas={horaTrabajadas.V3}
-            /> 
+            Errores={Errores.V3 || Errores.C10}
+          />
         </div>
         <div className="col-md-2">
-        <Input 
+          <Input
             nombre="V4"
-            handleInputChange={handleInputChange}
+            handleHoraChange={handleHoraChange}
             horaTrabajadas={horaTrabajadas.V4}
-            /> 
+            Errores={Errores.V4 || Errores.C10}
+          />
         </div>
-        
+
       </form>
-      <div> 
-          {(moment(horaTrabajadas.V3, "HH:mm")) > (moment(horaTrabajadas.V4, "HH:mm")) ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+      <div>
+        {Errores.C10 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
       </div>
-      
+
     </div>
-    
+
   );
-        
+
 };
 
 export default Formulario;
