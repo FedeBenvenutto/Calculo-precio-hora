@@ -26,6 +26,16 @@ function App() {
       setErrores({ ...Errores,  [event.target.name]: false }) :
       setErrores({ ...Errores,  [event.target.name]: true });
   };
+  const Lunesmanana = ()=> {
+    let valor=horaTrabajadas.L1;
+    let valor2=horaTrabajadas.L2;
+    setHoraTrabajadas({ ...horaTrabajadas, M1:valor, I1:valor, J1: valor, V1: valor, M2:valor2, I2:valor2, J2: valor2, V2: valor2})
+  };
+  const Lunestarde = ()=> {
+    let valor=horaTrabajadas.L3;
+    let valor2=horaTrabajadas.L4;
+    setHoraTrabajadas({ ...horaTrabajadas, M3:valor, I3:valor, J3: valor, V3: valor, M4:valor2, I4:valor2, J4: valor2, V4: valor2})
+  };
 
   const handlePrecioChange = (event) => {
     setPrecioHora(event.target.value)
@@ -110,7 +120,9 @@ function App() {
     setErrores({PH: false, L1: false, L2: false, M1: false,
       M2: false, I1: false, I2: false, J1: false, J2: false, V1: false, V2: false, L3: false, L4: false,
       M3: false, M4: false, I3: false, I4: false, J3: false, J4: false, V3: false, V4: false, C1: false,
-      C2: false, C3: false, C4: false, C5: false, C6: false, C7: false, C8: false, C9: false, C10: false})
+      C2: false, C3: false, C4: false, C5: false, C6: false, C7: false, C8: false, C9: false, C10: false});
+
+  
 
   }
   return (
@@ -124,17 +136,27 @@ function App() {
         Errores={Errores}
       /> </h1>
       <br />
-
-      <h5>  El valor total a pagar es $ {comprobarErrores ? "" : CalculoTotal} </h5>
       <div>
-        <>
-
-          {comprobarErrores ? <p className="text-danger fs-6 font-monospace ms-2"> Por favor corrija los errores </p> : ""}
-        </>
+          {comprobarErrores ? <h5 className="text-danger fs-6 font-monospace ms-3"> Por favor corrija los errores </h5> : ""}
       </div>
+      <h5>  El valor total a pagar es $ {comprobarErrores ? "" : CalculoTotal} </h5>   
       <br></br>
       <button
-        className="btn btn-primary"
+        className="btn btn-primary mt-2"
+        type="submit"
+        onClick={Lunesmanana}>
+        Copiar valor lunes a la mañana al resto
+      </button>
+      <br></br>
+      <button
+        className="btn btn-primary mt-2"
+        type="submit"
+        onClick={Lunestarde}> 
+        Copiar valor lunes a la tarde al resto
+      </button>
+      <br></br>
+      <button
+        className="btn btn-primary mt-2"
         type="submit"
         onClick={Reiniciar}>
         Reiniciar
