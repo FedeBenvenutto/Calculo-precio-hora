@@ -20,9 +20,12 @@ function App() {
   });
 
   const handleHoraChange = (event) => {
-    setHoraTrabajadas({ ...horaTrabajadas, [event.target.name]: event.target.value });
-    let valor = event.target.value;
-    valor.length === 5 && valor[0] < 3 && valor[3] < 6 && valor[2] === ':' && (valor[0] + valor[1]) < 24 ?
+    let valor = event.target.value.replace(/[^0-9]/g, '')
+    .replace(/([0-9]{2})/, '$1:');
+    setHoraTrabajadas({ ...horaTrabajadas, [event.target.name]: valor });
+    let patronHora = /^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$/
+    console.log(patronHora.test(valor))
+    patronHora.test(valor) ?
       setErrores({ ...Errores,  [event.target.name]: false }) :
       setErrores({ ...Errores,  [event.target.name]: true });
   };
@@ -38,7 +41,8 @@ function App() {
   };
 
   const handlePrecioChange = (event) => {
-    setPrecioHora(event.target.value)
+    let valor = event.target.value.replace(/[^0-9]/g, '')
+    setPrecioHora(valor)
     if (event.target.value >= 0) {
       setErrores({ ...Errores,  PH: false })
     } else {

@@ -8,6 +8,7 @@ const Input = ({ nombre, horaTrabajadas, handleHoraChange, Errores }) => {
       type="text"
       name={nombre}
       onChange={handleHoraChange}
+      maxLength= "5"
     ></input>
   )
 }
