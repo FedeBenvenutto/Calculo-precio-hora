@@ -5,13 +5,12 @@ import Input from "./input";
 const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrabajadas, Errores }) => {
 
   return (
-    <div className="conteiner">
-      <h1> Calculo total de horas con precio</h1><br></br>
-      <form className="row align-items-start">
-        <div className="col-md-2">
+    <div className="formulario">
+        <form className="row align-items-start">
+        <div className="col-6 align-self-center">
           <p> Precio de la hora </p>
         </div>
-        <div className="col-md-2">
+        <div className="col">
           <input
             className={`form-control ${Errores.PH ? "alert-danger" : ""}`}
             type="text"
@@ -21,11 +20,11 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
           ></input>
         </div>
       </form>
-      <form className="row align-items-start">
-        <div className="col-md-2">
+      <form className="row align-items-start ">
+        <div className="col-6 mt-1 align-self-center">
           <p> Lunes a la mañana </p>
         </div>
-        <div className="col-md-2">
+        <div className="col mt-1">
           <Input
             nombre="L1"
             handleHoraChange={handleHoraChange}
@@ -33,7 +32,7 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
             Errores={Errores.L1 || Errores.C1}
           />
         </div>
-        <div className="col-md-2">
+        <div className="col mt-1">
           <Input
             nombre="L2"
             handleHoraChange={handleHoraChange}
@@ -47,10 +46,10 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
         </div>
       </form>
       <form className="row">
-        <div className="col-md-2">
+        <div className="col-6 align-self-center">
           <p> Lunes a la tarde</p>
         </div>
-        <div className="col-md-2">
+        <div className="col">
           <Input
             nombre="L3"
             handleHoraChange={handleHoraChange}
@@ -58,7 +57,7 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
             Errores={Errores.L3 || Errores.C2}
           />
         </div>
-        <div className="col-md-2">
+        <div className="col">
           <Input
             nombre="L4"
             handleHoraChange={handleHoraChange}
@@ -72,10 +71,10 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
         {Errores.C2 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
       </div>
       <form className="row">
-        <div className="col-md-2">
+        <div className="col-6 align-self-center">
           <p> Martes a la mañana </p>
         </div>
-        <div className="col-md-2">
+        <div className="col">
           <Input
             nombre="M1"
             handleHoraChange={handleHoraChange}
@@ -83,7 +82,7 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
             Errores={Errores.M1 || Errores.C3}
           />
         </div>
-        <div className="col-md-2">
+        <div className="col">
           <Input
             nombre="M2"
             handleHoraChange={handleHoraChange}
@@ -96,10 +95,10 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
         {Errores.C3 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
       </div>
       <form className="row align-items-start">
-        <div className="col-md-2">
+        <div className="col-6 align-self-center">
           <p> Martes a la tarde </p>
         </div>
-        <div className="col-md-2">
+        <div className="col">
           <Input
             nombre="M3"
             handleHoraChange={handleHoraChange}
@@ -107,7 +106,7 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
             Errores={Errores.M3 || Errores.C4}
           />
         </div>
-        <div className="col-md-2">
+        <div className="col">
           <Input
             nombre="M4"
             handleHoraChange={handleHoraChange}
@@ -120,10 +119,10 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
         {Errores.C4 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
       </div>
       <form className="row">
-        <div className="col-md-2">
+        <div className="col-6 align-self-center">
           <p> Miércoles a la mañana</p>
         </div>
-        <div className="col-md-2">
+        <div className="col">
           <Input
             nombre="I1"
             handleHoraChange={handleHoraChange}
@@ -131,7 +130,7 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
             Errores={Errores.I1 || Errores.C5}
           />
         </div>
-        <div className="col-md-2">
+        <div className="col">
           <Input
             nombre="I2"
             handleHoraChange={handleHoraChange}
@@ -144,10 +143,10 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
         {Errores.C5 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
       </div>
       <form className="row">
-        <div className="col-md-2">
+        <div className="col-6 align-self-center">
           <p> Miércoles a la tarde </p>
         </div>
-        <div className="col-md-2">
+        <div className="col">
           <Input
             nombre="I3"
             handleHoraChange={handleHoraChange}
@@ -155,7 +154,7 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
             Errores={Errores.I3 || Errores.C6}
           />
         </div>
-        <div className="col-md-2">
+        <div className="col">
           <Input
             nombre="I4"
             handleHoraChange={handleHoraChange}
@@ -168,10 +167,10 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
         {Errores.C6 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
       </div>
       <form className="row align-items-start">
-        <div className="col-md-2">
+        <div className="col-6 align-self-center">
           <p> Jueves a la mañana </p>
         </div>
-        <div className="col-md-2">
+        <div className="col">
           <Input
             nombre="J1"
             handleHoraChange={handleHoraChange}
@@ -179,7 +178,7 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
             Errores={Errores.J1 || Errores.C7}
           />
         </div>
-        <div className="col-md-2">
+        <div className="col">
           <Input
             nombre="J2"
             handleHoraChange={handleHoraChange}
@@ -192,10 +191,10 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
         {Errores.C7 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
       </div>
       <form className="row">
-        <div className="col-md-2">
+        <div className="col-6 align-self-center">
           <p> Jueves a la tarde</p>
         </div>
-        <div className="col-md-2">
+        <div className="col">
           <Input
             nombre="J3"
             handleHoraChange={handleHoraChange}
@@ -203,7 +202,7 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
             Errores={Errores.J3 || Errores.C8}
           />
         </div>
-        <div className="col-md-2">
+        <div className="col">
           <Input
             nombre="J4"
             handleHoraChange={handleHoraChange}
@@ -216,10 +215,10 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
         {Errores.C8 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
       </div>
       <form className="row">
-        <div className="col-md-2">
+        <div className="col-6 align-self-center">
           <p> Viernes a la mañana </p>
         </div>
-        <div className="col-md-2">
+        <div className="col">
           <Input
             nombre="V1"
             handleHoraChange={handleHoraChange}
@@ -227,7 +226,7 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
             Errores={Errores.V1 || Errores.C9}
           />
         </div>
-        <div className="col-md-2">
+        <div className="col">
           <Input
             nombre="V2"
             handleHoraChange={handleHoraChange}
@@ -240,10 +239,10 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
         {Errores.C9 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
       </div>
       <form className="row">
-        <div className="col-md-2">
+        <div className="col-6 align-self-center">
           <p> Viernes a la tarde </p>
         </div>
-        <div className="col-md-2">
+        <div className="col">
           <Input
             nombre="V3"
             handleHoraChange={handleHoraChange}
@@ -251,7 +250,7 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
             Errores={Errores.V3 || Errores.C10}
           />
         </div>
-        <div className="col-md-2">
+        <div className="col">
           <Input
             nombre="V4"
             handleHoraChange={handleHoraChange}

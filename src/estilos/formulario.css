@@ -1,3 +1,9 @@
 p {
-    font-size: 16px
+    font-size: 16.1px;
+    text-align: left;
+    display: table-cell;  
+}
+
+.formulario {
+    width: 350px;
 }

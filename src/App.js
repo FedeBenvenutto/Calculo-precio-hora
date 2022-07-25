@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Formulario from './components/formulario';
 import moment from 'moment';
+import "../src/estilos/App.css"
 
 function App() {
   const [precioHora, setPrecioHora] = useState(0);
@@ -113,7 +114,8 @@ function App() {
 
   }
   return (
-    <div className="container mt-5">
+    <div className="container mt-4">
+      <h1 className='text-center text-md-start'> Calculo total de horas con precio</h1><br></br>
       <h1> <Formulario
         precioHora={precioHora}
         handlePrecioChange={handlePrecioChange}
