@@ -4,12 +4,13 @@ const Input = ({ nombre, horaTrabajadas, handleHoraChange, Errores }) => {
   return (
     <input
       className={`form-control ${Errores ? "alert-danger" : ""}`}
-      value={horaTrabajadas}
+      value={horaTrabajadas === "00:00" ? "" : horaTrabajadas}
       type="text"
       name={nombre}
       onChange={handleHoraChange}
       maxLength= "5"
-    ></input>
+      placeholder="00:00"
+      ></input>
   )
 }
 

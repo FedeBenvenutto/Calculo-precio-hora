@@ -16,7 +16,8 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
             type="text"
             name="precioHora"
             onChange={handlePrecioChange}
-            value={precioHora}
+            value={precioHora === 0 ? "" : precioHora}
+            placeholder="0"
           ></input>
         </div>
       </form>
