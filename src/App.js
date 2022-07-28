@@ -5,7 +5,7 @@ import "../src/estilos/App.css"
 
 function App() {
 
-  //* USESTATES NECESARIOS
+  // USESTATES NECESARIOS
   const [precioHora, setPrecioHora] = useState(0);
   const [Errores, setErrores] = useState({
     PH: false, L1: false, L2: false, M1: false,
@@ -20,6 +20,13 @@ function App() {
     M3: "00:00", M4: "00:00", I3: "00:00", I4: "00:00", J3: "00:00", J4: "00:00",
     V3: "00:00", V4: "00:00",
   });
+  useEffect(() => {if (localStorage.getItem("precioHora")) {
+    setErrores (JSON.parse(localStorage.getItem("Errores")))
+    setPrecioHora (localStorage.getItem("precioHora") )
+    setHoraTrabajadas(JSON.parse(localStorage.getItem ("horaTrabajadas")))
+    // eslint-disable-next-line
+  }}, []);
+  
 
 // MODIFICACIONES DEL PRECIO Y DE LAS HORAS
   const handlePrecioChange = (event) => {
@@ -41,8 +48,7 @@ function App() {
       setHoraTrabajadas({ ...horaTrabajadas, [event.target.name]: "00:00"
        });
       setErrores({ ...Errores,  [event.target.name]: false})
-       } 
-    else { 
+       } else { 
     let valor = event.target.value.replace(/[^0-9]/g, '')
     .replace(/([0-9]{2})/, '$1:');
     setHoraTrabajadas({ ...horaTrabajadas, [event.target.name]: valor });
@@ -56,28 +62,35 @@ function App() {
   const Lunesmanana = ()=> {
     let valor=horaTrabajadas.L1;
     let valor2=horaTrabajadas.L2;
-    setHoraTrabajadas({ ...horaTrabajadas, M1:valor, I1:valor, J1: valor, V1: valor, M2:valor2, I2:valor2, J2: valor2, V2: valor2})
+    setHoraTrabajadas({ ...horaTrabajadas, M1:valor, I1:valor, J1: valor, V1: valor, M2:valor2, 
+      I2:valor2, J2: valor2, V2: valor2})
   };
   const Lunestarde = ()=> {
     let valor=horaTrabajadas.L3;
     let valor2=horaTrabajadas.L4;
-    setHoraTrabajadas({ ...horaTrabajadas, M3:valor, I3:valor, J3: valor, V3: valor, M4:valor2, I4:valor2, J4: valor2, V4: valor2})
+    setHoraTrabajadas({ ...horaTrabajadas, M3:valor, I3:valor, J3: valor, V3: valor, M4:valor2, 
+      I4:valor2, J4: valor2, V4: valor2})
+  };
+  const Guardar = (event) => {
+    localStorage.clear();
+    localStorage.setItem('precioHora', precioHora);
+    localStorage.setItem('Errores', JSON.stringify(Errores));
+    localStorage.setItem('horaTrabajadas', JSON.stringify(horaTrabajadas));
   };
   const Reiniciar = (event) => {
-    event.preventDefault()
     setHoraTrabajadas({
       L1: "00:00", L2: "00:00", M1: "00:00", M2: "00:00",
       I1: "00:00", I2: "00:00", J1: "00:00", J2: "00:00", V1: "00:00", V2: "00:00",
       L3: "00:00", L4: "00:00", M3: "00:00", M4: "00:00", I3: "00:00", I4: "00:00",
-      J3: "00:00", J4: "00:00", V3: "00:00", V4: "00:00",
-
+      J3: "00:00", J4: "00:00", V3: "00:00", V4: "00:00"
     })
     setPrecioHora(0);
     setErrores({PH: false, L1: false, L2: false, M1: false,
       M2: false, I1: false, I2: false, J1: false, J2: false, V1: false, V2: false, L3: false, L4: false,
       M3: false, M4: false, I3: false, I4: false, J3: false, J4: false, V3: false, V4: false, C1: false,
       C2: false, C3: false, C4: false, C5: false, C6: false, C7: false, C8: false, C9: false, C10: false});
-  }
+    localStorage.clear()
+  };
 
   // MANEJO DE ERRORES 
   var comprobarErroresInput =  Errores.L1 || Errores.L2 || Errores.M1 ||
@@ -91,38 +104,29 @@ function App() {
 
   useEffect(() => {
     if (!comprobarErroresInput) {
-      var C1 = false, C2 = false, C3 = false, C4 = false, C5 = false, C6 = false, C7 = false, C8 = false, C9 = false, C10 = false;
+      var C1 = false, C2 = false, C3 = false, C4 = false, C5 = false, 
+      C6 = false, C7 = false, C8 = false, C9 = false, C10 = false;
       if ((moment(horaTrabajadas.L2, "HH:mm")) < (moment(horaTrabajadas.L1, "HH:mm"))) {
         C1 = true;
-      }
-      if ((moment(horaTrabajadas.L4, "HH:mm")) < (moment(horaTrabajadas.L3, "HH:mm"))) {
+      } if ((moment(horaTrabajadas.L4, "HH:mm")) < (moment(horaTrabajadas.L3, "HH:mm"))) {
         C2 = true;
-      }
-      if ((moment(horaTrabajadas.M2, "HH:mm")) < (moment(horaTrabajadas.M1, "HH:mm"))) {
+      } if ((moment(horaTrabajadas.M2, "HH:mm")) < (moment(horaTrabajadas.M1, "HH:mm"))) {
         C3 = true;
-      };
-      if ((moment(horaTrabajadas.M4, "HH:mm")) < (moment(horaTrabajadas.M3, "HH:mm"))) {
+      } if ((moment(horaTrabajadas.M4, "HH:mm")) < (moment(horaTrabajadas.M3, "HH:mm"))) {
         C4 = true;
-      };
-      if ((moment(horaTrabajadas.I2, "HH:mm")) < (moment(horaTrabajadas.I1, "HH:mm"))) {
+      } if ((moment(horaTrabajadas.I2, "HH:mm")) < (moment(horaTrabajadas.I1, "HH:mm"))) {
         C5 = true;
-      };
-      if ((moment(horaTrabajadas.I4, "HH:mm")) < (moment(horaTrabajadas.I3, "HH:mm"))) {
+      } if ((moment(horaTrabajadas.I4, "HH:mm")) < (moment(horaTrabajadas.I3, "HH:mm"))) {
         C6 = true
-      };
-      if ((moment(horaTrabajadas.J2, "HH:mm")) < (moment(horaTrabajadas.J1, "HH:mm"))) {
+      } if ((moment(horaTrabajadas.J2, "HH:mm")) < (moment(horaTrabajadas.J1, "HH:mm"))) {
         C7 = true
-      };
-      if ((moment(horaTrabajadas.J4, "HH:mm")) < (moment(horaTrabajadas.J3, "HH:mm"))) {
+      } if ((moment(horaTrabajadas.J4, "HH:mm")) < (moment(horaTrabajadas.J3, "HH:mm"))) {
         C8 = true
-      };
-      if ((moment(horaTrabajadas.V2, "HH:mm")) < (moment(horaTrabajadas.V1, "HH:mm"))) {
+      } if ((moment(horaTrabajadas.V2, "HH:mm")) < (moment(horaTrabajadas.V1, "HH:mm"))) {
         C9 = true
-      };
-      if ((moment(horaTrabajadas.V4, "HH:mm")) < (moment(horaTrabajadas.V3, "HH:mm"))) {
+      } if ((moment(horaTrabajadas.V4, "HH:mm")) < (moment(horaTrabajadas.V3, "HH:mm"))) {
         C10 = true
-      }
-    }
+      }}
     setErrores({ ...Errores, C1: C1, C2: C2, C3: C3, C4: C4, C5: C5, C6: C6, C7: C7, C8: C8, C9: C9, C10: C10 })
   }
     // eslint-disable-next-line
@@ -156,7 +160,9 @@ function App() {
       /> </h1>
       <br />
       <div>
-          {comprobarErrores ? <h5 className="text-danger fs-6 font-monospace ms-3"> Por favor corrija los errores </h5> : ""}
+          {comprobarErrores ? 
+          <h5 className="text-danger fs-6 font-monospace ms-3"> Por favor corrija los errores </h5> 
+          : ""}
       </div>
       <h5>  El valor total a pagar es $ {comprobarErrores ? "" : CalculoTotal} </h5>   
       <br></br>
@@ -172,12 +178,17 @@ function App() {
         Copiar valor lunes a la tarde al resto
       </button>
       <br></br>
+      
       <button
-        className="btn btn-primary mt-2"
+        className="btn btn-secondary mt-2"
+        onClick={Guardar}>
+        Guardar datos
+      </button>
+    <button
+        className="btn btn-danger mt-2 ms-2"
         onClick={Reiniciar}>
         Reiniciar
       </button>
-
     </div>
   );
 }
