@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Calculo-precio-hora/static/css/main.e573981f.css",
-    "main.js": "/Calculo-precio-hora/static/js/main.8c6378b3.js",
+    "main.js": "/Calculo-precio-hora/static/js/main.b4ad61dc.js",
     "index.html": "/Calculo-precio-hora/index.html",
     "main.e573981f.css.map": "/Calculo-precio-hora/static/css/main.e573981f.css.map",
-    "main.8c6378b3.js.map": "/Calculo-precio-hora/static/js/main.8c6378b3.js.map"
+    "main.b4ad61dc.js.map": "/Calculo-precio-hora/static/js/main.b4ad61dc.js.map"
   },
   "entrypoints": [
     "static/css/main.e573981f.css",
-    "static/js/main.8c6378b3.js"
+    "static/js/main.b4ad61dc.js"
   ]
 }
