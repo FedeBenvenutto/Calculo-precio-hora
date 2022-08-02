@@ -102,35 +102,61 @@ function App() {
     Errores.M3 || Errores.M4 || Errores.I3 || Errores.I4 || Errores.J3 || Errores.J4 || Errores.V3 || Errores.V4 || Errores.C1 ||
     Errores.C2 || Errores.C3 || Errores.C4 || Errores.C5 || Errores.C6 || Errores.C7 || Errores.C8 || Errores.C9 || Errores.C10
 
-  useEffect(() => {
-    if (!comprobarErroresInput) {
-      var C1 = false, C2 = false, C3 = false, C4 = false, C5 = false, 
-      C6 = false, C7 = false, C8 = false, C9 = false, C10 = false;
-      if ((moment(horaTrabajadas.L2, "HH:mm")) < (moment(horaTrabajadas.L1, "HH:mm"))) {
-        C1 = true;
-      } if ((moment(horaTrabajadas.L4, "HH:mm")) < (moment(horaTrabajadas.L3, "HH:mm"))) {
-        C2 = true;
-      } if ((moment(horaTrabajadas.M2, "HH:mm")) < (moment(horaTrabajadas.M1, "HH:mm"))) {
-        C3 = true;
-      } if ((moment(horaTrabajadas.M4, "HH:mm")) < (moment(horaTrabajadas.M3, "HH:mm"))) {
-        C4 = true;
-      } if ((moment(horaTrabajadas.I2, "HH:mm")) < (moment(horaTrabajadas.I1, "HH:mm"))) {
-        C5 = true;
-      } if ((moment(horaTrabajadas.I4, "HH:mm")) < (moment(horaTrabajadas.I3, "HH:mm"))) {
-        C6 = true
-      } if ((moment(horaTrabajadas.J2, "HH:mm")) < (moment(horaTrabajadas.J1, "HH:mm"))) {
-        C7 = true
-      } if ((moment(horaTrabajadas.J4, "HH:mm")) < (moment(horaTrabajadas.J3, "HH:mm"))) {
-        C8 = true
-      } if ((moment(horaTrabajadas.V2, "HH:mm")) < (moment(horaTrabajadas.V1, "HH:mm"))) {
-        C9 = true
-      } if ((moment(horaTrabajadas.V4, "HH:mm")) < (moment(horaTrabajadas.V3, "HH:mm"))) {
-        C10 = true
-      }}
-    setErrores({ ...Errores, C1: C1, C2: C2, C3: C3, C4: C4, C5: C5, C6: C6, C7: C7, C8: C8, C9: C9, C10: C10 })
-  }
-    // eslint-disable-next-line
-    , [horaTrabajadas]);
+    useEffect(() => {
+      if (!comprobarErroresInput) {
+        var C1 = false, C2 = false, C3 = false, C4 = false, C5 = false, 
+        C6 = false, C7 = false, C8 = false, C9 = false, C10 = false;
+        if ((moment(horaTrabajadas.L2, "HH:mm")) < (moment(horaTrabajadas.L1, "HH:mm")) 
+        && horaTrabajadas.L2 !== "00:00") {
+          C1 = true;
+        } if ((moment(horaTrabajadas.L4, "HH:mm")) < (moment(horaTrabajadas.L3, "HH:mm"))
+        && horaTrabajadas.L4 !== "00:00") {
+          C2 = true;
+        } if ((moment(horaTrabajadas.M2, "HH:mm")) < (moment(horaTrabajadas.M1, "HH:mm"))
+        && horaTrabajadas.M2 !== "00:00") {
+          C3 = true;
+        } if ((moment(horaTrabajadas.M4, "HH:mm")) < (moment(horaTrabajadas.M3, "HH:mm"))
+        && horaTrabajadas.M4 !== "00:00") {
+          C4 = true;
+        } if ((moment(horaTrabajadas.I2, "HH:mm")) < (moment(horaTrabajadas.I1, "HH:mm"))
+        && horaTrabajadas.I2 !== "00:00") {
+          C5 = true;
+        } if ((moment(horaTrabajadas.I4, "HH:mm")) < (moment(horaTrabajadas.I3, "HH:mm"))
+        && horaTrabajadas.I4 !== "00:00") {
+          C6 = true
+        } if ((moment(horaTrabajadas.J2, "HH:mm")) < (moment(horaTrabajadas.J1, "HH:mm"))
+        && horaTrabajadas.J2 !== "00:00") {
+          C7 = true
+        } if ((moment(horaTrabajadas.J4, "HH:mm")) < (moment(horaTrabajadas.J3, "HH:mm"))
+        && horaTrabajadas.J4 !== "00:00") {
+          C8 = true
+        } if ((moment(horaTrabajadas.V2, "HH:mm")) < (moment(horaTrabajadas.V1, "HH:mm"))
+        && horaTrabajadas.I2 !== "00:00") {
+          C9 = true
+        } if ((moment(horaTrabajadas.V4, "HH:mm")) < (moment(horaTrabajadas.V3, "HH:mm"))
+        && horaTrabajadas.I4 !== "00:00") {
+          C10 = true
+        } if ((moment(horaTrabajadas.L3, "HH:mm")) < (moment(horaTrabajadas.L2, "HH:mm")) 
+        && horaTrabajadas.L3 !== "00:00") {
+          C1 = true; C2 = true;
+        } if ((moment(horaTrabajadas.M3, "HH:mm")) < (moment(horaTrabajadas.M2, "HH:mm"))
+        && horaTrabajadas.M3 !== "00:00") {
+          C3 = true; C4= true;
+        } if ((moment(horaTrabajadas.I3, "HH:mm")) < (moment(horaTrabajadas.I2, "HH:mm"))
+        && horaTrabajadas.I3 !== "00:00") {
+          C5 = true;  C6= true;
+        } if ((moment(horaTrabajadas.J3, "HH:mm")) < (moment(horaTrabajadas.J2, "HH:mm"))
+        && horaTrabajadas.J3 !== "00:00") {
+          C7 = true;  C8= true;
+        } if ((moment(horaTrabajadas.V3, "HH:mm")) < (moment(horaTrabajadas.V2, "HH:mm"))
+        && horaTrabajadas.V3 !== "00:00") {
+          C9 = true;  C10= true;
+        }}
+      setErrores({ ...Errores, C1: C1, C2: C2, C3: C3, C4: C4, C5: C5, C6: C6, C7: C7, C8: C8, C9: C9, C10: C10 })
+    }
+      // eslint-disable-next-line
+      , [horaTrabajadas]);
+  
 
     // CALCULO TOTAL 
   var CalculoTotal = (
