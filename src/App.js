@@ -188,9 +188,11 @@ function App() {
       <div>
           {comprobarErrores ? 
           <h5 className="text-danger fs-6 font-monospace ms-3"> Por favor corrija los errores </h5> 
+          : CalculoTotal < 0 ?  
+          <h5 className="text-danger fs-6 font-monospace ms-3"> El valor de finalización no puede ser 00:00 </h5> 
           : ""}
       </div>
-      <h5>  El valor total a pagar es $ {comprobarErrores ? "" : CalculoTotal} </h5>   
+      <h5>  El valor total a pagar es $ {comprobarErrores || CalculoTotal < 0 ? "" : CalculoTotal} </h5>   
       <br></br>
       <button
         className="btn btn-primary mt-2"
