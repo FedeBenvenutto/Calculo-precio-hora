@@ -2,17 +2,22 @@ import React from "react";
 import "../estilos/formulario.css";
 import Input from "./input";
 
-const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrabajadas, Errores }) => {
-
+const Formulario = ({
+  precioHora,
+  handleHoraChange,
+  handlePrecioChange,
+  horaTrabajadas,
+  Errores,
+}) => {
   return (
     <div className="formulario">
-        <form className="row align-items-start">
+      <form className="row align-items-start">
         <div className="col-6 align-self-center">
           <p> Precio de la hora </p>
         </div>
         <div className="col">
           <input
-            className={`form-control ${Errores.PH ? "alert-danger" : ""}`}
+            className={`form-control ${Errores.PH && "alert-danger"}`}
             type="text"
             name="precioHora"
             onChange={handlePrecioChange}
@@ -42,8 +47,11 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
           />
         </div>
         <div>
-          {Errores.C1 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6>
-            : ""}
+          {Errores.C1 && (
+            <h6 className="text-danger fs-6 font-monospace ms-2">
+              Por favor corrija este campo
+            </h6>
+          )}
         </div>
       </form>
       <form className="row">
@@ -66,10 +74,13 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
             Errores={Errores.L4 || Errores.C2}
           />
         </div>
-
       </form>
       <div>
-        {Errores.C2 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+        {Errores.C2 && (
+          <h6 className="text-danger fs-6 font-monospace ms-2">
+            Por favor corrija este campo
+          </h6>
+        ) }
       </div>
       <form className="row">
         <div className="col-6 align-self-center">
@@ -93,7 +104,11 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
         </div>
       </form>
       <div>
-        {Errores.C3 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+        {Errores.C3 && (
+          <h6 className="text-danger fs-6 font-monospace ms-2">
+            Por favor corrija este campo
+          </h6>
+        )}
       </div>
       <form className="row align-items-start">
         <div className="col-6 align-self-center">
@@ -117,7 +132,11 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
         </div>
       </form>
       <div>
-        {Errores.C4 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+        {Errores.C4 && (
+          <h6 className="text-danger fs-6 font-monospace ms-2">
+            Por favor corrija este campo
+          </h6>
+        )}
       </div>
       <form className="row">
         <div className="col-6 align-self-center">
@@ -141,7 +160,11 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
         </div>
       </form>
       <div>
-        {Errores.C5 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+        {Errores.C5 && (
+          <h6 className="text-danger fs-6 font-monospace ms-2">
+            Por favor corrija este campo
+          </h6>
+        )}
       </div>
       <form className="row">
         <div className="col-6 align-self-center">
@@ -165,7 +188,11 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
         </div>
       </form>
       <div>
-        {Errores.C6 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+        {Errores.C6 && (
+          <h6 className="text-danger fs-6 font-monospace ms-2">
+            Por favor corrija este campo
+          </h6>
+        )}
       </div>
       <form className="row align-items-start">
         <div className="col-6 align-self-center">
@@ -189,7 +216,11 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
         </div>
       </form>
       <div>
-        {Errores.C7 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+        {Errores.C7 && (
+          <h6 className="text-danger fs-6 font-monospace ms-2">
+            Por favor corrija este campo
+          </h6>
+        )}
       </div>
       <form className="row">
         <div className="col-6 align-self-center">
@@ -213,7 +244,11 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
         </div>
       </form>
       <div>
-        {Errores.C8 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+        {Errores.C8 && (
+          <h6 className="text-danger fs-6 font-monospace ms-2">
+            Por favor corrija este campo
+          </h6>
+        )}
       </div>
       <form className="row">
         <div className="col-6 align-self-center">
@@ -237,7 +272,11 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
         </div>
       </form>
       <div>
-        {Errores.C9 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+        {Errores.C9 && (
+          <h6 className="text-danger fs-6 font-monospace ms-2">
+            Por favor corrija este campo
+          </h6>
+        ) }
       </div>
       <form className="row">
         <div className="col-6 align-self-center">
@@ -259,16 +298,16 @@ const Formulario = ({ precioHora, handleHoraChange, handlePrecioChange, horaTrab
             Errores={Errores.V4 || Errores.C10}
           />
         </div>
-
       </form>
       <div>
-        {Errores.C10 ? <h6 className="text-danger fs-6 font-monospace ms-2"> Por favor corrija este campo </h6> : ""}
+        {Errores.C10 && (
+          <h6 className="text-danger fs-6 font-monospace ms-2">
+            Por favor corrija este campo
+          </h6>
+        )}
       </div>
-
     </div>
-
   );
-
 };
 
 export default Formulario;

@@ -29,14 +29,14 @@ function App() {
   
 
 // MODIFICACIONES DEL PRECIO Y DE LAS HORAS
-  const handlePrecioChange = (event) => {
-    if (event.target.value === "") {
+const handlePrecioChange = (event) => {
+    let valor = event.target.value.replace(/[^0-9.]/g, '')
+    if (valor === "") {
       setPrecioHora(0);
       setErrores({ ...Errores,  PH: false })
       } else {
-    let valor = event.target.value.replace(/[^0-9]/g, '')
     setPrecioHora(valor)
-    if (event.target.value >= 0) {
+    if (valor >= 0) {
       setErrores({ ...Errores,  PH: false })
     } else {
       setErrores({ ...Errores,  PH: true })
